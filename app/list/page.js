@@ -1,11 +1,18 @@
-import React from 'react';
+import { connectDB } from "@/util/db";
+import ListItem from "./ListItem";
 
-function page(props) {
+// export const dynamic = 'force-dynamic'
+
+async function List() {
+
+    const db = (await connectDB).db('forum')
+    let  result = await db.collection('post').find().toArray()
+
     return (
-        <div>
-            list
+        <div className="list-bg">
+            <ListItem result={result}></ListItem>
         </div>
     );
 }
 
-export default page;
+export default List;
