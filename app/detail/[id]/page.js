@@ -1,5 +1,6 @@
 import { connectDB } from "@/util/db";
 import { ObjectId } from "mongodb";
+import Comment from "./Comment";
 
 async function Detail(props) {
 
@@ -12,6 +13,7 @@ async function Detail(props) {
             <p>상세페이지</p>
             <p>{result.title}</p>
             <p>{result.content}</p>
+            <Comment _id={result._id.toString()}/>
         </div>
     )
 }
